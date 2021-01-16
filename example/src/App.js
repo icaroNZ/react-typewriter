@@ -1,10 +1,15 @@
 import React from 'react'
 
-import { ExampleComponent } from 'react-typewriter'
+import Typewriter from 'react-typewriter'
 import 'react-typewriter/dist/index.css'
 
 const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
+  const textArrayExample = [
+    'small',
+    'medium, this is a medium size text example',
+    'long text, this is a long text to server as an example how long text work!'
+  ]
+  return <Typewriter textArray={textArrayExample} />
 }
 
 export default App

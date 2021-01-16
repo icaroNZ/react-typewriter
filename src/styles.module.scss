@@ -1,0 +1,51 @@
+$typewriter-color-text: #525f7f;
+$typewriter-color-underline: #d50000;
+$typewriter-text-size: 1.25rem;
+
+.typewriter {
+  background-position: 0% 100%;
+  border-bottom: 3px solid $typewriter-color-underline;
+  box-sizing: border-box;
+  color: $typewriter-color-text;
+  padding-right: 2px;
+  position: relative;
+  transition: background-position 1s;
+  font-size: $typewriter-text-size;
+  font-weight: 300;
+
+  &::after {
+    animation: blink-cursor 0.75s step-end infinite;
+    background-color: transparent;
+    content: '';
+    display: block;
+    height: $typewriter-text-size;
+    position: absolute;
+    right: 0;
+    bottom: 2px;
+    width: 2px;
+  }
+
+  &.highlight {
+    background-image: linear-gradient(
+      to left,
+      rgba(0, 0, 0, 0.2) 50%,
+      transparent 50%
+    );
+    background-position: 100% 100%;
+    background-repeat: no-repeat;
+    background-size: 200% 2rem;
+
+    &::after {
+      animation: none;
+    }
+  }
+}
+
+@keyframes blink-cursor {
+  0% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: black;
+  }
+}

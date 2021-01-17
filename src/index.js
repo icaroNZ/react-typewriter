@@ -1,14 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import styles from './styles.module.scss'
 
 function Typewriter({ textArray }) {
   if (typeof textArray === 'undefined' || textArray.length === 0) {
     throw new Error('The prop textArray most have at least one value')
   }
-
-  useEffect(() => {
-    startType(textArray[0], 0)
-  }, [])
 
   const typewriter = useRef()
   const [typed, setTyped] = useState('')
@@ -18,7 +14,7 @@ function Typewriter({ textArray }) {
   let newTyped = ''
   let textLineIndex = 0
 
-  function startType(pun, index) {
+  const startType = useCallback((pun, index) => {
     if (index < pun.length) {
       newTyped = newTyped + pun.charAt(index)
       setTyped(newTyped)
@@ -42,7 +38,11 @@ function Typewriter({ textArray }) {
         startType(textArray[textLineIndex], 0)
       }, 5000)
     }
-  }
+  }, [])
+
+  useEffect(() => {
+    startType(textArray[0], 0)
+  }, [startType])
 
   return (
     <span

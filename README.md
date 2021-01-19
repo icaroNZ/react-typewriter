@@ -19,7 +19,7 @@ npm install --save @icarolavrador/react-typewriter
 ```jsx
 import React from 'react'
 
-import Typewriter from 'react-typewriter'
+import Typewriter from '@icarolavrador/react-typewriter'
 import 'react-typewriter/dist/index.css'
 
 const App = () => {
